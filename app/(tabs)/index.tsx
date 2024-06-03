@@ -1,4 +1,5 @@
-import { StyleSheet, View } from 'react-native'
+import { View } from 'native-base'
+import { StyleSheet } from 'react-native'
 
 export default function TabOneScreen() {
   return <View style={styles.container}></View>
