@@ -39,13 +39,14 @@ const styles = StyleSheet.create({
   header: { marginBottom: 10 },
 
   headerTitle: {
-    paddingTop: 10,
+    // paddingTop: 10,
     fontSize: 26,
-    fontWeight: 700,
+    fontWeight: 400,
+    lineHeight: 30,
   },
 
   content: {
-    marginBottom: 18,
+    marginBottom: 30,
   },
 
   contentDescription: { fontSize: 20, color: '#858585' },

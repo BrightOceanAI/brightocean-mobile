@@ -19,7 +19,7 @@ export default function AuthChoice() {
         </Box>
 
         <BottomDrawer
-          title="Navegando o futuro"
+          title="Um oceano de possibilidades"
           description="Faça log-in ou crie uma conta"
           content={
             <Box style={styles.actions}>

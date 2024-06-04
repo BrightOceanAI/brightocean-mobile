@@ -9,16 +9,16 @@ export const getButtonVariant = (variant?: ButtonVariantsTyping) => {
         container: {
           borderWidth: 1,
           backgroundColor: 'transparent',
-          borderColor: '#037bfc',
+          borderColor: '#2565cc',
         },
 
-        fontColor: '#037bfc',
+        fontColor: '#2565cc',
       }
       break
     default:
       styles = {
         container: {
-          backgroundColor: '#037bfc',
+          backgroundColor: '#2565cc',
         },
 
         fontColor: '#fff',
