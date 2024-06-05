@@ -1,3 +1,5 @@
+import Colors from "@/src/constants/Colors"
+
 export type ButtonVariantsTyping = 'outline'
 
 export const getButtonVariant = (variant?: ButtonVariantsTyping) => {
@@ -9,16 +11,16 @@ export const getButtonVariant = (variant?: ButtonVariantsTyping) => {
         container: {
           borderWidth: 1,
           backgroundColor: 'transparent',
-          borderColor: '#2565cc',
+          borderColor: Colors.primary,
         },
 
-        fontColor: '#2565cc',
+        fontColor: Colors.primary,
       }
       break
     default:
       styles = {
         container: {
-          backgroundColor: '#2565cc',
+          backgroundColor: Colors.primary,
         },
 
         fontColor: '#fff',
