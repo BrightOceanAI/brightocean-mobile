@@ -1,21 +1,62 @@
+import { createAccount } from "@/src/api/services/auth/create-account";
 import StyledButton from "@/src/components/shared/Button";
 import StyledInput from "@/src/components/shared/Input";
 import Colors from "@/src/constants/Colors";
 import { useNavigation } from "expo-router";
-import { Box, Text } from "native-base";
-import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Box } from "native-base";
+import React, { useEffect, useState } from "react";
+import { Alert, Image, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 
 export default function RegisterScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    cpf: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
+
+  const handleInputChange = (name: string, value: string) => {
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSignUp = () => {
+    if (
+      !userData.name ||
+      !userData.email ||
+      !userData.cpf ||
+      !userData.password
+    ) {
+      Alert.alert("Erro", "Por favor, preencha todos os campos.");
+      return;
+    }
+
+    createAccount(userData)
+      .then(() => {
+        navigation.navigate("login");
+
+        Alert.alert("Pronto", "Conta criada com sucesso!");
+        return;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <SafeAreaView
       style={{
         display: "flex",
-        // justifyContent: "space-between",
         alignItems: "center",
         flex: 1,
         backgroundColor: "white",
@@ -33,14 +74,30 @@ export default function RegisterScreen() {
 
       <Box style={styles.content}>
         <Box style={styles.form}>
-          <StyledInput label="Nome" />
-          <StyledInput label="E-mail" />
-          <StyledInput label="CPF" />
-          <StyledInput label="Senha" />
+          <StyledInput
+            onChangeText={(text) => handleInputChange("name", text)}
+            value={userData.name}
+            label="Nome"
+          />
+          <StyledInput
+            onChangeText={(text) => handleInputChange("email", text)}
+            value={userData.email}
+            label="E-mail"
+          />
+          <StyledInput
+            onChangeText={(text) => handleInputChange("cpf", text)}
+            value={userData.cpf}
+            label="CPF"
+          />
+          <StyledInput
+            onChangeText={(text) => handleInputChange("password", text)}
+            value={userData.password}
+            label="Senha"
+          />
         </Box>
 
         <Box style={styles.actions}>
-          <StyledButton>Criar conta</StyledButton>
+          <StyledButton onPress={handleSignUp}>Criar conta</StyledButton>
           <StyledButton
             onPress={() => navigation.navigate("login")}
             variant="outline"

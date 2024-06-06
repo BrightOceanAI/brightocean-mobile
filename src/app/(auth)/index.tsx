@@ -6,7 +6,7 @@ import React from "react";
 import { Image, ImageBackground, StyleSheet } from "react-native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 
-export default function AuthChoice() {
+export default function AuthChoiceScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   return (

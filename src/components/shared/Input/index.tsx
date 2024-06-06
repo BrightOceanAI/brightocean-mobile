@@ -16,6 +16,7 @@ export default function StyledInput({ label, ...props }: StyledInputProps) {
         fontSize={18}
         _focus={{ backgroundColor: "white", borderColor: Colors.primary }}
         borderRadius={40}
+        {...props}
       />
     </Box>
   );

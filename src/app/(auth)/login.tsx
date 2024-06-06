@@ -1,15 +1,26 @@
 import StyledButton from "@/src/components/shared/Button";
 import StyledInput from "@/src/components/shared/Input";
 import Colors from "@/src/constants/Colors";
+import { useAuth } from "@/src/contexts/AuthContext";
 import { useNavigation } from "expo-router";
 import { Box, Text } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 
 export default function LoginScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const { signIn } = useAuth();
+
+  const [userData, setUserData] = useState({ email: "", password: "" });
+
+  const handleInputChange = (name: string, value: string) => {
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   return (
     <SafeAreaView
@@ -33,12 +44,22 @@ export default function LoginScreen() {
 
       <Box style={styles.content}>
         <Box style={styles.form}>
-          <StyledInput label="E-mail" />
-          <StyledInput label="Senha" />
+          <StyledInput
+            onChangeText={(text) => handleInputChange("email", text)}
+            value={userData.email}
+            label="E-mail"
+          />
+          <StyledInput
+            onChangeText={(text) => handleInputChange("password", text)}
+            value={userData.password}
+            label="Senha"
+          />
         </Box>
 
         <Box style={styles.actions}>
-          <StyledButton>Entrar na conta</StyledButton>
+          <StyledButton onPress={() => signIn(userData)}>
+            Entrar na conta
+          </StyledButton>
           <StyledButton
             onPress={() => navigation.navigate("register")}
             variant="outline"
