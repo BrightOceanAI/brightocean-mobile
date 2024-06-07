@@ -57,7 +57,7 @@ export default function LoginScreen() {
         </Box>
 
         <Box style={styles.actions}>
-          <StyledButton onPress={() => navigation.navigate('(root)')}>
+          <StyledButton onPress={() => signIn(userData)}>
             Entrar na conta
           </StyledButton>
           <StyledButton
