@@ -33,24 +33,20 @@ export default function UploadAnalysisScreen() {
 
   const handleChangeStep = async () => {
     if (uploadStep === 'camera') {
-      // await createCamera({
-      //   modeloCamera: cameraData.modeloCamera,
-      //   localizacao: cameraData.localizacao,
-      //   latitude: Number(cameraData.latitude),
-      //   longitude: Number(cameraData.longitude),
-      // })
-      //   .then(() => {
-      //     setUploadStep('image')
-      //     Alert.alert('Câmera cadastrada com sucesso!')
-      //   })
-      //   .catch((err) => {
-      //     Alert.alert('Erro ao cadastrar câmera. Tente novamente.')
-      //     console.error(err)
-      //   })
-
-      Alert.alert('Câmera cadastrada com sucesso!')
-
-      setUploadStep('image')
+      await createCamera({
+        modeloCamera: cameraData.modeloCamera,
+        localizacao: cameraData.localizacao,
+        latitude: Number(cameraData.latitude),
+        longitude: Number(cameraData.longitude),
+      })
+        .then(() => {
+          setUploadStep('image')
+          Alert.alert('Câmera cadastrada com sucesso!')
+        })
+        .catch((err) => {
+          Alert.alert('Erro ao cadastrar câmera. Tente novamente.')
+          console.error(err)
+        })
     } else {
       setUploadStep('camera')
     }
