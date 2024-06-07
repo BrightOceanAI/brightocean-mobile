@@ -1,20 +1,20 @@
-import CoralReefMap from "@/src/components/cases/CoralReefMap";
-import Colors from "@/src/constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "expo-router";
-import { Box, Text, View } from "native-base";
-import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
+import CoralReefMap from '@/src/components/cases/CoralReefMap'
+import Colors from '@/src/constants/Colors'
+import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from 'expo-router'
+import { Box, Text, View } from 'native-base'
+import React from 'react'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types'
 
 export default function AnalysisScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
 
   return (
     <SafeAreaView style={styles.container}>
       <Box style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate("index")}>
+        <TouchableOpacity onPress={() => navigation.navigate('index')}>
           <Ionicons name="arrow-back" color={Colors.primary} size={32} />
         </TouchableOpacity>
 
@@ -43,7 +43,7 @@ export default function AnalysisScreen() {
         </Box>
       </Box>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 15,
     marginBottom: 30,
   },
@@ -67,23 +67,23 @@ const styles = StyleSheet.create({
   },
 
   mapContainer: {
-    width: "100%",
+    width: '100%',
     height: 240,
   },
 
-  analysisData: { width: "100%", marginTop: 30, display: "flex", gap: 10 },
+  analysisData: { width: '100%', marginTop: 30, display: 'flex', gap: 10 },
 
   content: {
-    display: "flex",
+    display: 'flex',
     gap: 20,
     padding: 10,
-    backgroundColor: "white",
-    width: "100%",
+    backgroundColor: 'white',
+    width: '100%',
     borderRadius: 10,
   },
 
   contentField: {
-    display: "flex",
+    display: 'flex',
     gap: 6,
   },
 
@@ -92,22 +92,22 @@ const styles = StyleSheet.create({
   },
 
   contentHealth: {
-    display: "flex",
+    display: 'flex',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 100,
-    backgroundColor: "#32a852",
-    color: "white",
+    backgroundColor: '#32a852',
+    color: 'white',
     fontWeight: 600,
   },
 
   contentDate: {
-    display: "flex",
+    display: 'flex',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 100,
-    backgroundColor: "#f2f2f2",
-    color: "#525252",
+    backgroundColor: '#f2f2f2',
+    color: '#525252',
     fontWeight: 600,
   },
-});
+})

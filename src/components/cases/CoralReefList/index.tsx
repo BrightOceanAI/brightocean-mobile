@@ -1,26 +1,34 @@
-import ItemList from "@/src/components/layout/ItemList";
-import { useNavigation } from "expo-router";
-import { Box, Text } from "native-base";
-import React from "react";
-import { StyleSheet } from "react-native";
-import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
+import Colors from '@/src/constants/Colors'
+import { useNavigation } from 'expo-router'
+import { Box, Text } from 'native-base'
+import React from 'react'
+import { StyleSheet } from 'react-native'
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types'
+import ListItem from '../../layout/ItemList'
+import NoReefsRegistered from '../NoReefsRegistered'
 
 export default function CoralReefList() {
-  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>()
+
+  const coralReefsList = ['a']
 
   return (
     <Box style={styles.historyContainer}>
       <Text style={styles.title}>Recifes analisados</Text>
 
       <Box style={styles.historyList}>
-        <ItemList
-          title="Nome do recife"
-          description="Clique para visualizar"
-          onPress={() => navigation.navigate("analysis")}
-        />
+        {coralReefsList.length ? (
+          <ListItem
+            title="Recife #01"
+            description="Clique para visualizar"
+            onPress={() => navigation.navigate('analysis')}
+          />
+        ) : (
+          <NoReefsRegistered />
+        )}
       </Box>
     </Box>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -30,15 +38,15 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
 
-  historyContainer: { display: "flex", gap: 15, overflow: "hidden" },
+  historyContainer: { display: 'flex', gap: 15, overflow: 'hidden' },
 
   historyList: {
-    width: "100%",
+    width: '100%',
     minHeight: 200,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#e3e3e3",
-    overflow: "hidden",
+    borderColor: Colors.lightBorder,
+    overflow: 'hidden',
   },
-});
+})
